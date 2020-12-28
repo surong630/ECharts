@@ -166,4 +166,75 @@ header {
       content:'';
     }
   }
+  .no-bd {
+    ul {
+      display: flex;
+      li {
+        flex: 1;
+        text-align: center;
+        color: rgba(255,255,255,0.7);
+        font-size: .225rem;
+        height: .5rem;
+        line-height: .5rem;
+        padding-top: .125rem;
+      }
+    }
+  }
+}
+.map {
+  position: relative;
+  height: 10.125rem;
+  .map1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 6.475rem;
+    height: 6.475rem;    
+    background: url('../images/map.png');
+    background-size: 100% 100%;
+    opacity: 0.3;
+  }
+  .map2 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 8.0375rem;
+    height: 8.0375rem;
+    background: url(../images/lbx.png);
+    background-size: 100% 100%;
+    animation: rotate1  15s linear infinite;
+  }
+  @keyframes rotate1 {
+    from {
+      transform: translate(-50%,-50%) 
+      rotate(0deg);
+    }
+    to {
+      transform: translate(-50%,-50%) 
+      rotate(360deg);
+    }
+  }
+  .map3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 7.075rem;
+    width: 7.075rem;
+    background: url('../images/jt.png');
+    background-size: 100% 100%;
+    animation: linear rotate2 15s infinite;
+  }
+  @keyframes rotate2 {
+    from {
+      transform:translate(-50%,-50%)
+      rotate(0deg);
+    }
+    to {
+      transform: translate(-50%,-50%)
+      rotate(-360deg)
+    }
+  }
 }
