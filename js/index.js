@@ -80,7 +80,7 @@
 })();
 // 柱状图2模块
 (function() {
-  var myColor = ['#8871E6','#FEB555','#68C4F0','#FA807C','#3C7DEB']
+  var myColor = ['#8871E6','#FEB555','#68C4F0','#FA807C','pink']
   var myChart = echarts.init(document.querySelector('.bar2 .chart'));
   option = {
     grid: {
