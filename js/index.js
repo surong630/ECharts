@@ -169,4 +169,87 @@
     ]
 };
   myChart.setOption(option);
+  window.addEventListener('resize', function() {
+    myChart.resize()
+  })
+})();
+// 折线图1模块制作
+(function () {
+  // 1.实例化对象
+  var myChart = echarts.init(document.querySelector(".line .chart"))
+  // 2.指定配置
+  option = {
+    tooltip: {
+        trigger: 'axis'
+    },
+    legend: {
+        data: ['邮件营销', '联盟广告'],
+        textStyle: {
+          color: '#4c9bfd'
+        },
+        right: '10%'
+    },
+    grid: {
+        top: '20%',
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true,
+        show: true,
+        borderColor: '#012f4a'
+    },
+    toolbox: {
+        feature: {
+            saveAsImage: {}
+        }
+    },
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+        axisTick: {
+          show: false
+        },
+        axisLabel: {
+          color: '#4c9bfd'
+        },
+        axisLine: {
+          show: false
+        },
+        boundaryGap: false
+    },
+    yAxis: {
+        type: 'value',
+        axisTick: {
+          show: false
+        },
+        axisLabel: {
+          color: '#4c9bfd'
+        },
+        axisLine: {
+          show: false
+        },
+        splitLine: {
+          lineStyle: {
+            color: '#012f4a'
+          }
+        }
+    },
+    series: [
+        {
+            name: '邮件营销',
+            type: 'line',
+            stack: '总量',
+            data: [120, 132, 101, 134, 90, 230, 210]
+        },
+        {
+            name: '联盟广告',
+            type: 'line',
+            stack: '总量',
+            data: [220, 182, 191, 234, 290, 330, 310]
+        }
+    ]
+};
+  // 3.把配置给示例对象
+  myChart.setOption(option)
 })()
