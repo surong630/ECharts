@@ -179,11 +179,11 @@
   var myChart = echarts.init(document.querySelector(".line .chart"))
   // 2.指定配置
   option = {
+    color: ["#00f2f1","#ed3f35"],
     tooltip: {
         trigger: 'axis'
     },
     legend: {
-        data: ['邮件营销', '联盟广告'],
         textStyle: {
           color: '#4c9bfd'
         },
@@ -206,7 +206,7 @@
     xAxis: {
         type: 'category',
         boundaryGap: false,
-        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+        data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月', ],
         axisTick: {
           show: false
         },
@@ -237,19 +237,22 @@
     },
     series: [
         {
-            name: '邮件营销',
+            name: '新增粉丝',
             type: 'line',
-            stack: '总量',
-            data: [120, 132, 101, 134, 90, 230, 210]
+            smooth: true,
+            data: [24, 40, 101, 134, 90, 230, 210, 230, 120, 230, 210, 120]
         },
         {
-            name: '联盟广告',
+            name: '新增游客',
             type: 'line',
-            stack: '总量',
-            data: [220, 182, 191, 234, 290, 330, 310]
+            smooth: true,
+            data: [40, 64, 191, 324, 290, 330, 310, 213, 180, 200, 180, 79]
         }
     ]
 };
   // 3.把配置给示例对象
-  myChart.setOption(option)
+  myChart.setOption(option);
+  window.addEventListener('resize', function() {
+    myChart.resize()
+  })
 })()
