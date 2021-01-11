@@ -175,6 +175,22 @@
 })();
 // 折线图1模块制作
 (function () {
+  var yearData = [
+    {
+      year: '2020',  // 年份
+      data: [  // 两个数组是因为有两条线
+           [24, 40, 101, 134, 90, 230, 210, 230, 120, 230, 210, 120],
+           [40, 64, 191, 324, 290, 330, 310, 213, 180, 200, 180, 79]
+        ]
+    },
+    {
+      year: '2021',  // 年份
+      data: [  // 两个数组是因为有两条线
+           [123, 175, 112, 197, 121, 67, 98, 21, 43, 64, 76, 38],
+       [143, 131, 165, 123, 178, 21, 82, 64, 43, 60, 19, 34]
+        ]
+    }
+   ];
   // 1.实例化对象
   var myChart = echarts.init(document.querySelector(".line .chart"))
   // 2.指定配置
@@ -252,7 +268,101 @@
 };
   // 3.把配置给示例对象
   myChart.setOption(option);
+  // 4.让图表跟随屏幕自动的去适应
   window.addEventListener('resize', function() {
     myChart.resize()
   })
+  // 5.点击切换效果
+  $('.line h2').on('click', 'a', function () {
+    // 点击a之后 根据当前a的索引号 找到对应的yearData的相关对象
+    var obj = yearData[$(this).index()]
+    option.series[0].data = obj.data[0]
+    option.series[1].data = obj.data[1]
+    myChart.setOption(option);
+  })
+})();
+// 折线图2模块制作
+(function () {
+  var myChart = echarts.init(document.querySelector('.line2 .chart'))
+  option = {
+    tooltip: {
+        trigger: 'axis',
+    },
+    legend: {
+        data: ['邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎'],
+        top: "0%",
+        textStyle: {
+          color: "rgba(255,255,255,.5)",
+          fontSize: "12px"
+        }
+    },
+    grid: {
+        left: '10',
+        top: '30',
+        right: '10',
+        bottom: '10',
+        containLabel: true
+    },
+    xAxis: [
+        {
+            type: 'category',
+            boundaryGap: false,
+            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+            // 更改文本颜色,大小
+            axisLabel: {
+              textStyle: {
+                color: "rgba(255,255,255,.6)",
+                fontSize: 12
+              }
+            },
+             // x轴线的颜色为   rgba(255,255,255,.2)
+            axisLine: {
+              lineStyle: {
+                color: "rgba(255,255,255,.2)"
+              }
+            },
+        }
+    ],
+    yAxis: [
+        {
+            type: 'value',
+            axisTick: { show: false },
+        axisLine: {
+          lineStyle: {
+            color: "rgba(255,255,255,.1)"
+          }
+        },
+        axisLabel: {
+          textStyle: {
+            color: "rgba(255,255,255,.6)",
+            fontSize: 12
+          }
+        },
+	   // 修改分割线的颜色
+        splitLine: {
+          lineStyle: {
+            color: "rgba(255,255,255,.1)"
+          }
+        }
+        }
+    ],
+    series: [
+        {
+            name: '邮件营销',
+            type: 'line',
+            stack: '总量',
+            areaStyle: {},
+            data: [120, 132, 101, 134, 90, 230, 210],
+            color: 'red'
+        },
+        {
+            name: '联盟广告',
+            type: 'line',
+            stack: '总量',
+            areaStyle: {},
+            data: [220, 182, 191, 234, 290, 330, 310]
+        }
+    ]
+};
+  myChart.setOption(option)
 })()
