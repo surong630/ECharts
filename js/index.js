@@ -293,7 +293,7 @@
         top: "0%",
         textStyle: {
           color: "rgba(255,255,255,.5)",
-          fontSize: "12px"
+          fontSize: "12"
         }
     },
     grid: {
@@ -307,7 +307,7 @@
         {
             type: 'category',
             boundaryGap: false,
-            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+            data:  [ "01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","26","28","29","30"],
             // 更改文本颜色,大小
             axisLabel: {
               textStyle: {
@@ -350,17 +350,92 @@
         {
             name: '邮件营销',
             type: 'line',
-            stack: '总量',
+            smooth: true,
             areaStyle: {},
-            data: [120, 132, 101, 134, 90, 230, 210],
-            color: 'red'
+            data: [ 30, 40, 30, 40,30, 40, 30,60,20, 40, 30, 40, 30, 40,30, 40, 30,60,20, 40, 30, 40, 30, 40,30, 40, 20,60,50, 40],
+            color: 'red',
+            // 单独修改线条的粗细
+            lineStyle: {
+              width: 2,
+              color: "#0184d5"
+            },
+            areaStyle: {
+              // 渐变色
+              color: new echarts.graphic.LinearGradient(
+                0,
+                0,
+                0,
+                1,
+                [
+                  {
+                    offset: 0,
+                    color: "rgba(1, 132, 213, 0.4)"   // 渐变色的起始颜色
+                  },
+                  {
+                    offset: 0.8,
+                    color: "rgba(1, 132, 213, 0.1)"   // 渐变线的结束颜色
+                  }
+                ],
+                false
+              ),
+              shadowColor: "rgba(0, 0, 0, 0.1)"
+            },
+            // 设置拐点样式
+            symbol: 'circle',
+            // 设置拐点大小
+            symbolSize: 8,
+            showSymbol: false,
+            itemStyle: {
+              color: "#0184d5",
+              borderColor: "rgba(221,220,107,.1)",
+              borderWidth: 12
+            }
         },
         {
             name: '联盟广告',
             type: 'line',
-            stack: '总量',
-            areaStyle: {},
-            data: [220, 182, 191, 234, 290, 330, 310]
+            smooth: true,
+            lineStyle: {
+              normal: {
+                color: "#00d887",
+                width: 2
+              }
+             },
+             areaStyle: {
+              normal: {
+                color: new echarts.graphic.LinearGradient(
+                  0,
+                  0,
+                  0,
+                  1,
+                  [
+                    {
+                      offset: 0,
+                      color: "rgba(0, 216, 135, 0.4)"
+                    },
+                    {
+                      offset: 0.8,
+                      color: "rgba(0, 216, 135, 0.1)"
+                    }
+                  ],
+                  false
+                ),
+                shadowColor: "rgba(0, 0, 0, 0.1)"
+              }
+            },
+            // 设置拐点 小圆点
+            symbol: "circle",
+            // 拐点大小
+            symbolSize: 5,
+            // 设置拐点颜色以及边框
+             itemStyle: {
+                color: "#00d887",
+                borderColor: "rgba(221, 220, 107, .1)",
+                borderWidth: 12
+            },
+            // 开始不显示拐点， 鼠标经过显示
+            showSymbol: false,
+            data: [ 130, 10, 20, 40,30, 40, 80,60,20, 40, 90, 40,20, 140,30, 40, 130,20,20, 40, 80, 70, 30, 40,30, 120, 20,99,50, 20]
         }
     ]
 };
